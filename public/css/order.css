@@ -1,0 +1,68 @@
+section#header .nav .act{
+    color:red;
+}
+section#header nav{
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 4;
+}
+
+section#topContent .jumbotron{
+position: relative;
+top:51px;
+background-color: white;
+margin-bottom: 0px;
+padding-bottom: 2px;
+}
+section#topContent .jumbotron h1{
+    font-size: 50px;
+    font-weight: lighter;
+    }
+section#topContent .jumbotron hr{
+    border-color: tomato;
+    margin-bottom: 0px;    
+}
+section#topContent .jumbotron #root{
+    
+    background-color: #f5f5f5;
+    margin-top: 10px;    
+    padding-top: 30px;
+    padding-bottom: 30px;
+    
+}
+section#topContent .jumbotron .cardContainer{
+    background-color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+
+}
+section#topContent .jumbotron .contentContainer{
+    overflow: hidden;
+}
+section#topContent .jumbotron .contentContainer img{
+    width: 90px;
+    height: auto;
+}
+section#topContent .jumbotron .contentContainer .pName,
+section#topContent .jumbotron .contentContainer .pQuantity,
+section#topContent .jumbotron .contentContainer .pTotal
+{
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+#foot{
+    background-color: white;
+    
+}
+ 
+/* section#mainContent{
+    height: fit-content;
+}
+section#mainContent .jumbotron{
+    height: fit-content;
+    padding:2px;
+    background-color: darkcyan;
+} */

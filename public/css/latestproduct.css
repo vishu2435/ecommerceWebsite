@@ -1,0 +1,30 @@
+section#header .nav .act{
+    color:red;
+}
+section#content{
+    margin-top: 52px;
+}
+section#content .col-sm-2{
+    width: 172px;
+}
+section#content #productImage{
+ 
+    height: 300px;
+    overflow: hidden;
+
+
+}
+section#content img{
+    width: 80%;
+    height: inherit;
+}
+section#content #buyButtons{
+    margin-top: 18px;
+    width: fit-content;
+    
+}
+section#content #buyButtons a{
+    border-radius:  4px;
+    color:whitesmoke;
+    background-color: red;
+}

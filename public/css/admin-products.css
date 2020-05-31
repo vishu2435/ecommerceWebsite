@@ -1,0 +1,14 @@
+section#header .nav .act{
+    color:red;
+   
+}
+
+.errorMessage{
+    border: 2px solid red;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    background-color: blanchedalmond;
+    color: red;
+
+}

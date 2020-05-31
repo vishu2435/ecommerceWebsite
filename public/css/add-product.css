@@ -1,0 +1,56 @@
+/* section#contactForm .col-sm-3{
+    width: 140px;
+    text-align: end;
+}
+@media(max-width:991px){
+    section#contactForm .col-sm-3{
+        text-align:start;
+    }   
+} */
+.errorMessage{
+    border: 2px solid red;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    background-color: blanchedalmond;
+    color: red;
+
+}
+section#header .nav .act{
+    color:red;
+}
+section#main-content{
+    margin-top:69px ;
+}
+section#main-content #imagecontainer{
+    border: 1px dashed black;
+    height: 288px;
+    padding-top: 94px;
+    padding-left: 10%;
+    padding-bottom: 145px;
+}
+/* section#main-content .form-group{
+    margin-top: 3%;
+} */
+/* section#main-content .form-group{
+    border-radius: 0px;
+    height: 70px;
+    
+} */
+section#main-content input{
+    border-radius: 0px;
+    height: 41px;
+}
+section#main-content select{
+    border-radius: 0px;
+    height: 41px;
+}
+section#main-content textarea{
+    border-radius: 0px;
+ 
+}
+.errorDetected{
+    border-color: red; 
+    color: red;
+
+}

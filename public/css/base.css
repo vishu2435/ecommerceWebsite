@@ -1,0 +1,71 @@
+body{
+  padding-top:3.6em ;
+}
+#nav-menu{
+  padding-right: 3em;
+}
+section#header nav{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  border-radius: 0px;
+  z-index: 4;
+}
+/* row1 */
+header {
+    background-color: #F8F8F8;
+  }
+  
+  header ul {
+    margin: 0;
+  }
+  
+  header a,
+  header li {
+    padding: 1.4rem 0;
+    color: #777;
+    font-weight: bold;
+  }
+
+  /* row2 */
+section#intro-header {
+background-image: url('../images/informationtechnology.jpg');
+
+background-size: cover;  
+}
+
+section#intro-header .wrapheadline{
+    padding-top: 20%;
+    padding-bottom: 20%;
+ 
+    color:#f7f7f7;
+}
+section#intro-header hr{
+    width:20%
+}
+
+  /* row2 */
+section#about h3 {
+    margin-top: 6.5rem;
+    margin-bottom: 5rem;
+}
+section#about img{
+ margin-top: 6rem;
+    height: 300px;
+    width: 500px;
+  
+}
+footer{
+    background-color: #191919;
+  color: #ADADAD;
+  margin-top: 3em;
+  height: 20vh;
+}
+footer h5{
+    padding: 4em;
+}
+section#newsletter {
+    margin-top: 6em;
+    margin-bottom: 5em;
+}

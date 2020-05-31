@@ -1,0 +1,51 @@
+section#header nav{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    border-radius: 0px;
+    z-index: 4;
+  }
+body{
+    padding-top: 4em;
+    background-color: #F5F8FA;
+}
+
+section#mainContent .container-fluid{
+    padding-top: 87px;
+}
+section#mainContent #productImage{
+    height: 600px;
+    overflow: hidden;
+}
+section#mainContent img{
+    width: 100%;
+    height:inherit;
+
+}
+section#mainContent .jumbotron{
+    height :fit-content;
+    
+}
+section#mainContent .jumbotron h1{
+    font-size: 42px;
+}
+section#mainContent .jumbotron p{
+    color: red;
+    
+}
+section#mainContent .jumbotron button{
+    color: white;
+    margin-left: 16px;
+    width: 100px;
+    background-color: red;
+}
+section#mainContent .jumbotron button,
+section#mainContent .jumbotron input{
+    border-radius:0px ;
+}
+
+section#mainContent .jumbotron #buyNow{
+    width: inherit;
+    border-radius: 3px;
+}
