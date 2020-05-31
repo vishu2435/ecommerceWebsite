@@ -8,7 +8,7 @@ console.log(process.env.MONGO_USER);
 
 
 const mongoConnect=(cb)=>{
-MongoClient.connect(url2).then(result=>{
+MongoClient.connect(url).then(result=>{
     console.log("Connected to client successfulle");
     _db=result.db(dbname);
    console.log(process.env.MONGO_USER);
