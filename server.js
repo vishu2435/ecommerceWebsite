@@ -15,8 +15,8 @@ const ObjectId=require('mongodb').ObjectID;
 const loginroute=require('./routes/login');
 const session=require('express-session');
 app.set('view engine','ejs')
-const MongoDBStore=require('connect-mongodb-session')(session);
-const MONGODB_URI=`mongodb://localhost:27017`
+// const MongoDBStore=require('connect-mongodb-session')(session);
+// const MONGODB_URI=`mongodb://localhost:27017`
 const flash=require('connect-flash');
 const GridFsStorage=require('multer-gridfs-storage');
 const dataB=require('./database');
@@ -29,15 +29,15 @@ const compression=require('compression');
 const isAuth=require('./Middleware/is-auth')
 
 const jwt=require('jsonwebtoken');
-const stores=new MongoDBStore({
-    uri:MONGODB_URI,
-    databaseName:'productsData',
-    collection:'sessions'
-})
-stores.on('error',err=>{
-    console.log(err);
+// const stores=new MongoDBStore({
+//     uri:MONGODB_URI,
+//     databaseName:'productsData',
+//     collection:'sessions'
+// })
+// stores.on('error',err=>{
+//     console.log(err);
     
-})
+// })
 
 const fileStorge=multer.diskStorage({
     destination:(req,file,cb)=>{
@@ -75,7 +75,7 @@ app.use(multer({storage:fileStorge,fileFilter:fileFilter}).single('imageFile'))
 app.use("/uploads",express.static(path.join(__dirname,'uploads')));
 app.use('/image',express.static(path.join(__dirname,'image')));
 const csrfProtection=csrf();
-app.use(session({secret:'My Secret',resave:false,saveUninitialized:true,store:stores}));
+//app.use(session({secret:'My Secret',resave:false,saveUninitialized:true,store:stores}));
 app.use('/feed',feedsRoute);
 
 //const key=fs.readFileSync(path.join(__dirname,'server.key'));
@@ -152,49 +152,65 @@ app.get('/checkauth',(req,res,next)=>{
 app.get('/',(req,res,next)=>{
    // const loggedIn=req.get('Cookie').split(';')[2].trim().split('=')[1]==='true';    
 //console.log("Session from homepage ",req.session.user.getCartProducts);
-const token=req.headers.authorization.split(' ')[1]
-console.log(token)
-jwt.verify(token,"HJHDJHHJAHJHJJHDAJHDAJH",function(err,decoded){
-    if(err){
+if(req.headers.authorization){
+    const token=req.headers.authorization.split(' ')[1]
+    console.log(token)
+    jwt.verify(token,"HJHDJHHJAHJHJJHDAJHDAJH",function(err,decoded){
+        if(err){
+            productModel.Product.getAllProduct()
+            .then(function(doc){
+                
+                
+           //     var imgUrl=path.join(__dirname,doc.imgUrl.toString())
+            //  const loggedIn=req.get('Cookie').split(';')[2].trim().split('=')[1]==='true';
+                res.status(200).json({
+                    ...doc,
+                    error:err
+                });
+            })
+              
+        }
+        if(decoded){
+          console.log("From server .js ",decoded);
+             
+        User.user.findUserByEmail(decoded.userEmail)
+        .then(user=>{
+            //console.log(user);
+        // req.user=new User.user(user._id,user.userName,user.userEmail,user.userPassword,user.cart,user.order,user.isAdmin);
         productModel.Product.getAllProduct()
         .then(function(doc){
-            
-            
-       //     var imgUrl=path.join(__dirname,doc.imgUrl.toString())
-        //  const loggedIn=req.get('Cookie').split(';')[2].trim().split('=')[1]==='true';
-            res.status(200).json({
-                ...doc,
-                error:err
-            });
-        })
-          
-    }
-    if(decoded){
-      console.log("From server .js ",decoded);
-         
-    User.user.findUserByEmail(decoded.userEmail)
-    .then(user=>{
-        //console.log(user);
-    // req.user=new User.user(user._id,user.userName,user.userEmail,user.userPassword,user.cart,user.order,user.isAdmin);
-    productModel.Product.getAllProduct()
-    .then(function(doc){
-    
-        return res.status(200).json({
-            loggedIn:true,
-            user:user,
-            ...doc
-        })
-    })
-       
-    })
-    .catch(err=>{
-        console.log(err);
-    })
         
-    }
-      
+            return res.status(200).json({
+                loggedIn:true,
+                user:user,
+                ...doc
+            })
+        })
+           
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+            
+        }
+          
+    
+    })
 
-})
+}else{
+    productModel.Product.getAllProduct()
+            .then(function(doc){
+                
+                
+           //     var imgUrl=path.join(__dirname,doc.imgUrl.toString())
+            //  const loggedIn=req.get('Cookie').split(';')[2].trim().split('=')[1]==='true';
+                res.status(200).json({
+                    ...doc,
+                   
+                });
+            })
+}
+
     
    
 
@@ -220,9 +236,9 @@ app.use((req,res)=>{
 app.use((error,req,res,next)=>{
     console.log("Erorr logging from server.js ",error);
     
-    res.render('../views/500.ejs',{
-        error:error
-    })
+    // res.render('../views/500.ejs',{
+    //     error:error
+    // })
 })
 database.mongoConnect(()=>{
  app.listen(process.env.PORT||1080);
