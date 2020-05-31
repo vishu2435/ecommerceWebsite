@@ -152,6 +152,7 @@ app.get('/checkauth',(req,res,next)=>{
 app.get('/',(req,res,next)=>{
    // const loggedIn=req.get('Cookie').split(';')[2].trim().split('=')[1]==='true';    
 //console.log("Session from homepage ",req.session.user.getCartProducts);
+console.log(req.headers.authorization)
 if(req.headers.authorization){
     const token=req.headers.authorization.split(' ')[1]
     console.log(token)
@@ -227,11 +228,11 @@ app.get('/getjson',(req,res,next)=>{
     }
     res.send(myobj);
 })
-app.use((req,res)=>{
+// app.use((req,res)=>{
     
     
-    res.render('404.ejs');
-})
+//     res.render('404.ejs');
+// })
 
 app.use((error,req,res,next)=>{
     console.log("Erorr logging from server.js ",error);
